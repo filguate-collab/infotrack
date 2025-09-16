@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/billing.css">
+</head>
+<body>
+<div class="billing-container">
+    <h2>Billing Summary</h2>
+
+    <div class="billing-info">
+        <div class="balance-group">
+            <label>Past Due:</label>
+            <span id="past-due">$0.00</span>
+        </div>
+        <div class="balance-group">
+            <label>Total Due:</label>
+            <span id="total-due">$0.00</span>
+        </div>
+        <div class="balance-group">
+            <label>Next Payment Due:</label>
+            <span id="next-payment">09/30/2025</span>
+        </div>
+    </div>
+
+    <div class="payment-history">
+        <h3>Billing History</h3>
+        <ul id="history-list">
+    <li class="header">
+        <span class="date">Date</span>
+        <span class="description">Description</span>
+        <span class="amount">Debit / Credit</span>
+        <span class="balance">Balance</span>
+    </li>
+    <li>
+        <span class="date">07/01/2025</span>
+        <span class="description">Monthly Fee</span>
+        <span class="amount debit">+100.00</span>
+        <span class="balance">100.00</span>
+    </li>
+    <li>
+        <span class="date">07/15/2025</span>
+        <span class="description">Payment Received</span>
+        <span class="amount credit">-100.00</span>
+        <span class="balance">0.00</span>
+    </li>
+    <li>
+        <span class="date">08/01/2025</span>
+        <span class="description">Monthly Fee</span>
+        <span class="amount debit">+100.00</span>
+        <span class="balance">100.00</span>
+    </li>
+    <li>
+        <span class="date">08/15/2025</span>
+        <span class="description">Payment Received</span>
+        <span class="amount credit">-84.00</span>
+        <span class="balance">16.00</span>
+    </li>
+    <li>
+        <span class="date">09/01/2025</span>
+        <span class="description">Monthly Fee</span>
+        <span class="amount debit">+276.07</span>
+        <span class="balance">292.07</span>
+    </li>
+</ul>
+
+    </div>
+
+    <div class="billing-buttons">
+        
+    <a href="payment.html" class="button-link" id="make-payment" target="_blank">Make Payment</a>
+    <a href="infotrack.html" class="button-link" id="close-page">Close / Back</a>
+
+    </div>
+</div>
+
+<script>
+document.getElementById("make-payment").addEventListener("click", () => {
+    alert("Redirecting to payment page...");
+});
+
+document.getElementById("close-page").addEventListener("click", () => {
+    window.history.back();
+});
+
+// Llenar automáticamente Past Due y Total Due usando el último balance del historial
+const historyItems = document.querySelectorAll("#history-list li");
+if (historyItems.length > 0) {
+    const lastItem = historyItems[historyItems.length - 1];
+    const lastBalance = lastItem.querySelector(".balance").textContent;
+    const pastDue = parseFloat(historyItems[historyItems.length - 2].querySelector(".balance").textContent);
+    
+    document.getElementById("total-due").textContent = `$${parseFloat(lastBalance).toFixed(2)}`;
+    document.getElementById("past-due").textContent = `$${parseFloat(pastDue).toFixed(2)}`;
+}
+</script>
+</body>
+</html>
+
+
