@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Plan</title>
+    <link rel="stylesheet" href="/css/change-plan.css">
+</head>
+<body>
+<div class="change-plan-container">
+    <h2>Select a New Plan</h2>
+
+    <div class="plan-options">
+        <div class="plan-box">
+            <h3>Basic</h3>
+            <p>Price: $29.99/month</p>
+            <p>Contract: 12 months</p>
+            <p>Features: 10GB Data, 300 min calls, 500 texts</p>
+            <a href="#" class="select-plan" data-plan="Basic">Select Plan</a>
+        </div>
+        <div class="plan-box">
+            <h3>Regular</h3>
+            <p>Price: $49.99/month</p>
+            <p>Contract: 24 months</p>
+            <p>Features: 30GB Data, Unlimited calls, Unlimited texts</p>
+            <a href="#" class="select-plan" data-plan="Regular">Select Plan</a>
+        </div>
+        <div class="plan-box">
+            <h3>Plus</h3>
+            <p>Price: $69.99/month</p>
+            <p>Contract: 36 months</p>
+            <p>Features: 50GB Data, Unlimited calls, Unlimited texts, Priority Support</p>
+            <a href="#" class="select-plan" data-plan="Plus">Select Plan</a>
+        </div>
+    </div>
+
+    <a href="page-plans.html" class="button-link">Back</a>
+</div>
+
+<!-- Pop-up -->
+<div id="plan-popup" class="popup" style="display:none;">
+    <p id="plan-msg"></p>
+</div>
+
+<script>
+document.querySelectorAll('.select-plan').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const plan = btn.dataset.plan;
+        const popup = document.getElementById('plan-popup');
+        document.getElementById('plan-msg').textContent = `Your plan is now ${plan}, effective next billing cycle.`;
+        popup.style.display = 'block';
+        setTimeout(() => { popup.style.display = 'none'; }, 3000);
+    });
+});
+</script>
+</body>
+</html>
+

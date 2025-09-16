@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Open a Ticket</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/tickets.css">
+</head>
+<body>
+
+<div id="ticket-container">
+  <form id="ticket-form">
+    <h2>Open a Ticket</h2>
+
+    <!-- Tipo de Ticket -->
+    <div class="form-group">
+      <label for="ticket-type">Select Ticket Type:</label>
+      <select id="ticket-type" name="ticket-type" required>
+        <option value="">-- Choose one --</option>
+        <option value="device">Device Issue</option>
+        <option value="billing">Billing Issue</option>
+        <option value="report">Report an Issue</option>
+        <option value="network">Network Connectivity</option>
+      </select>
+    </div>
+
+    <!-- Preguntas -->
+    <div class="form-group">
+      <label>Have you restarted your device?</label>
+      <div class="toggle">
+        <label><input type="radio" name="q1" value="yes" required> Yes</label>
+        <label><input type="radio" name="q1" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Is your software updated?</label>
+      <div class="toggle">
+        <label><input type="radio" name="q2" value="yes" required> Yes</label>
+        <label><input type="radio" name="q2" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Have you checked your internet connection?</label>
+      <div class="toggle">
+        <label><input type="radio" name="q3" value="yes" required> Yes</label>
+        <label><input type="radio" name="q3" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Have you tried another device?</label>
+      <div class="toggle">
+        <label><input type="radio" name="q4" value="yes" required> Yes</label>
+        <label><input type="radio" name="q4" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Is your account active?</label>
+      <div class="toggle">
+        <label><input type="radio" name="q5" value="yes" required> Yes</label>
+        <label><input type="radio" name="q5" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Have you checked your billing statement?</label>
+      <div class="toggle">
+        <label><input type="radio" name="q6" value="yes" required> Yes</label>
+        <label><input type="radio" name="q6" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Did you try clearing cache or cookies?</label>
+      <div class="toggle">
+        <label><input type="radio" name="q7" value="yes" required> Yes</label>
+        <label><input type="radio" name="q7" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Do you want us to contact you back?</label>
+      <div class="toggle">
+        <label><input type="radio" name="q8" value="yes" required> Yes</label>
+        <label><input type="radio" name="q8" value="no"> No</label>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="button-group">
+      <button type="submit" id="submit-btn">Submit Ticket</button>
+      <button type="button" id="cancel-btn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<!-- Pop-up Confirmación -->
+<div id="popup" class="popup" style="display:none;">
+  <p>Your ticket has been submitted successfully!</p>
+  <p>Confirmation Code: <span id="confirmation-code"></span></p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("ticket-form");
+  const popup = document.getElementById("popup");
+  const codeSpan = document.getElementById("confirmation-code");
+  const cancelBtn = document.getElementById("cancel-btn");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Crear un código fake de confirmación
+    const code = Math.floor(100000 + Math.random() * 900000);
+    codeSpan.textContent = code;
+
+    popup.style.display = "block";
+
+    setTimeout(() => {
+      window.close();
+    }, 5000);
+  });
+
+  cancelBtn.addEventListener("click", () => {
+    window.close();
+  });
+});
+</script>
+
+</body>
+</html>

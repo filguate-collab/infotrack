@@ -1,0 +1,93 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4ff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 650px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    text-align: center;
+    color: #1a5cff;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #1a5cff;
+    color: white;
+}
+
+.button-link:hover {
+    background-color: #0060ff;
+}
+
+.history ul {
+    list-style: none;
+    padding: 0;
+}
+
+.history li {
+    display: flex;
+    justify-content: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e6f8;
+    align-items: center;
+}
+
+.history li.header {
+    font-weight: bold;
+    color: #196bc4;
+    border-bottom: 2px solid #1a5cff;
+}
+
+.history li span.date {
+    width: 90px;
+}
+
+.history li span.description {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.history li span.amount {
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.history li span.balance {
+    width: 100px;
+    text-align: right;
+    color: #1a5cff;
+}
+
+.amount.debit {
+    color: red;
+}
+.history li span.left {
+    width: 120px;
+    text-align: center;
+    color: #1a5cff;
+    font-weight: bold;
+}
